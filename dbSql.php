@@ -5,7 +5,7 @@ class dbSql {
     public $db;
 
     public function __construct() {
-        $this->db = new \MySQLi("localhost", "root", "5964625e", "ilpen") or die(mysqli_error());
+        $this->db = new \MySQLi("localhost", "root", "", "ilpen") or die(mysqli_error());
         mysqli_set_charset($this->db, 'utf8');
     }
 
