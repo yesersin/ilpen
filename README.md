@@ -1,4 +1,4 @@
-# php and curl
+# ilpen.com.tr 
 
 ## Açıklama 
   
@@ -9,7 +9,7 @@ ilpen.com.tr ürün satışına yönelik bir alt yapı sunuyor. Bu sisteme üye 
 Bu sistemi biraz toparlayıp cronjob yapılabilir hale getirmek istedim.
 
 
-## Table of Contents
+## İçerik
 * [Kurulum](#kurulum)
 * [Kullanım](#kullanim) 
 * [License](#license)
