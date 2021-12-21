@@ -11,7 +11,7 @@ Bu sistemi biraz toparlayıp cronjob yapılabilir hale getirmek istedim.
 
 ## İçerik
 * [Kurulum](#kurulum)
-* [Kullanım](#kullanim) 
+* [Kullanim](#kullanim) 
 * [License](#license)
   
 
@@ -31,7 +31,7 @@ Tüm stokları güncel olarak indirmek  için `getStock.php` çalıştırmalıs�
 
 Son olarak `wordpress` guncellemesi için `setWordpress.php` çalıştırmalısınız.
   
-## Kullanım 
+## Kullanim 
 
 Kendi sisteminizi kurmak için bu kodları kullanabilirsiniz.
 
