@@ -11,12 +11,10 @@ class dbSql
         mysqli_set_charset($this->db, 'utf8');
     }
 
-    public function mysql()
-    {
-        return $this->db;
-    }
-
-
+    /**
+     * Yapılması gereken ilk şey tüm kategorileri almak.
+     * veriler: katogirinin Id(pc_id), adı(pc_name)
+     */
     public function setCategories($veriler)
     {
         $this->sonuc = $this->db->prepare('INSERT INTO kategori (pc_id,pc_name) VALUES (?,?)');
@@ -24,6 +22,10 @@ class dbSql
         return $this->sonuc->execute();
     }
 
+    /**
+     * Kategorileri getirerek var olup olmama durumuna göre işlem yapıyoruz.
+     * id: kategoriId
+     */
     public function getId($id)
     {
         $veriler = $this->db->prepare("select id from kategori where pc_id=?");
@@ -34,6 +36,9 @@ class dbSql
         return $id;
     }
 
+    /**
+     * Tüm kategorileri getiriyorum. Amacım kategorileri alarak içindeki ürünlere erişmek
+     */
     public function getIdAll()
     {
         $veriler = $this->db->query("select DISTINCT pc_id from kategori");
@@ -44,6 +49,11 @@ class dbSql
         return $data;
     }
 
+    /**
+     * Ürünleri topluca kayıt ediyorum. Tüm ürünleri bilgileri ile birlikte kayıt ediyorum içinde gezmek daha rahat olacak.
+     * id: kategoriId(pc_id)
+     * u: o kategorideki tüm ürünler.
+     */
     public function setProduct($id, $u)
     {
         $g = 0;
@@ -66,6 +76,10 @@ class dbSql
 
     }
 
+    /**
+     * Ürünleri ürün koduna göre getiriyorum. Amaç aynı ürünü ikikere kayıt etmemek için sorgulamaktır.
+     * product_code : ürünün uniq kodu, id 'si
+     */
     public function getProduct($product_code)
     {
         $veriler = $this->db->prepare("select id from urunler where product_code=?");
@@ -76,6 +90,9 @@ class dbSql
         return $id;
     }
 
+    /**
+     * Tüm ürünleri benzersiz olarak çekiyoruz.
+     */
     public function getProductAll()
     {
         $veriler = $this->db->query("select DISTINCT product_code from urunler");
@@ -86,6 +103,11 @@ class dbSql
         return $data;
     }
 
+    /**
+     * Stokları ayrıca bir servis verdiği için ayrıca güncelleme yapıyorum.
+     * productCode: ürüne ait benzersiz Id (product_code olarakta geçiyor)
+     * STOCK_AMOUNT: ürünün güncel stok bilgisi
+     */
     public function setStock($productCode, $STOCK_AMOUNT)
     { 
         $this->sonuc = $this->db->prepare('Update urunler SET STOCK_AMOUNT=? WHERE product_code=?');
