@@ -108,10 +108,10 @@ class dbSql
      * productCode: ürüne ait benzersiz Id (product_code olarakta geçiyor)
      * STOCK_AMOUNT: ürünün güncel stok bilgisi
      */
-    public function setStock($productCode, $STOCK_AMOUNT)
+    public function setStock($productCode, $STOCK_AMOUNT,$STOCK_CODE)
     { 
-        $this->sonuc = $this->db->prepare('Update urunler SET STOCK_AMOUNT=? WHERE product_code=?');
-        $this->sonuc->bind_param('ss',   $STOCK_AMOUNT, $productCode);
+        $this->sonuc = $this->db->prepare('Update urunler SET STOCK_AMOUNT=?,STOCK_CODE=? WHERE product_code=?');
+        $this->sonuc->bind_param('sss',   $STOCK_AMOUNT,$STOCK_CODE, $productCode);
         $this->sonuc->execute(); 
     }
 
